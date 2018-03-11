@@ -1,0 +1,4 @@
+var newPost = $('<%= escape_javascript render "post", post: @post %>');
+
+
+$('.posts-list-container ul').prepend(newPost);

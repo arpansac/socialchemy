@@ -1,0 +1,28 @@
+<li id="post<%= post.id %>">
+	<p class="post-content"><%= post.content %></p>
+	<p class="post-user">
+		<small>
+			By <%= post.user.email %> 
+			at <%= post.created_at.to_date %>
+		</small>
+	</p>
+
+	<div class="post-comments-container">
+		<h4>Comments</h4>
+		<%= form_for @comment, remote: true do |fc| %>
+			<input type="hidden" name="comment[parent_type]" value="Post">
+			<input type="hidden" name="comment[parent_id]" value="<%= post.id %>">
+			
+			<%= fc.label :content, "New Comment" %>
+			<%= fc.text_field :content %>
+
+			<%= fc.submit %>
+		<%end%>
+		<ul>
+			<% post.comments.reverse.each do |comment| %>
+				<%= render 'comments/comment', comment: comment %>
+			<% end %>
+		</ul>
+
+	</div>
+</li>

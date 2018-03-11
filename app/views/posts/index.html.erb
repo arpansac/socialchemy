@@ -1,0 +1,32 @@
+<main class="body-main">
+	<h3>Posts</h3>
+
+	<%= form_for @post, remote: true do |f| %>
+		<%= f.label :content, "New Post" %>
+		<%= f.text_field :content %>
+
+		<%= f.submit %>
+	<% end %>
+
+	<div class="left-sidebar"></div>
+	<div class="posts-list-container center-container">
+		<ul>
+		<% Post.all.reverse.each do |p| %>
+			<%= render "post", post: p %>
+		<% end %>
+		</ul>
+		
+	</div>
+	<div class="right-sidebar"></div>
+
+</main>
+
+
+
+
+
+
+
+
+
+
