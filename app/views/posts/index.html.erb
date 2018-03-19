@@ -1,5 +1,10 @@
 <main class="body-main">
 	<h3>Posts</h3>
+	<p class="page_numbers">
+		G<% (1..@max_pages).each do |mp| %>
+			<a href="/?page=<%=mp%>&count=<%= @count %>"><%= mp %></a>
+		<% end %>gle
+	</p>
 
 	<%= form_for @post, remote: true do |f| %>
 		<%= f.label :content, "New Post" %>
@@ -10,8 +15,8 @@
 
 	<div class="left-sidebar"></div>
 	<div class="posts-list-container center-container">
-		<ul>
-		<% Post.all.reverse.each do |p| %>
+		<ul id="posts-list">
+		<% @posts.each do |p| %>
 			<%= render "post", post: p %>
 		<% end %>
 		</ul>
@@ -20,6 +25,57 @@
 	<div class="right-sidebar"></div>
 
 </main>
+<script type="text/javascript">
+	var nextPage = 2;
+	var postsAjax;
+	var maxPageReached = false;
+</script>
+<script type="text/javascript">
+	
+	function getPosts(){
+		 postsAjax = $.ajax({
+			type: 'GET',
+			url: '/',
+			data: {
+				page: nextPage,
+				count: 2
+			},
+			dataType: 'script'
+		})
+		
+	}
+
+	var initialScroll = 0;
+
+	$(window).scroll(function(){
+		if (window.scrollY > initialScroll + 200 && postsAjax == undefined ){
+			console.log('fired')
+			getPosts();
+			initialScroll = window.scrollY;
+		}
+	});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

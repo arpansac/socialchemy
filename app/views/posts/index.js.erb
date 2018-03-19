@@ -1,0 +1,12 @@
+<% @posts.each do |ps| %>
+	
+	$('#posts-list').append("<%= escape_javascript render 'post', post: ps %>")
+
+<% end %>
+
+
+nextPage = <%=  @page + 1 %>;
+postsAjax = undefined;
+// if @page == @max_pages
+
+	// max

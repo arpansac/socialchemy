@@ -16,7 +16,16 @@ class  CommentsController < ApplicationController
 				# user: current_user
 			)
 
+		UserMailer.new_comment(@comment).deliver_now
+
 
 	end
 
 end
+
+
+
+
+
+
+

@@ -5,7 +5,14 @@ class  PostsController < ApplicationController
 		@post = Post.new
 		@comment = Comment.new
 		# @posts = Post.all
+		@page = params[:page].blank? ? 1 : params[:page].to_i
+		@count = params[:count].blank? ? 2 : params[:count].to_i
 
+		@max_pages = Post.all.length/@count
+		
+		@posts = Post.offset((@page - 1) * @count).limit(@count)
+
+		
 	end
 
 	def create
@@ -15,6 +22,7 @@ class  PostsController < ApplicationController
 				# or you can do
 				# user: current_user
 			)
+		@comment = Comment.new
 
 
 	end

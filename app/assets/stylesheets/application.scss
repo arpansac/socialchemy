@@ -58,6 +58,42 @@ body{
 }
 
 
+@media (max-width: 440px){
+
+	body{
+		#body-header{
+			nav{
+				    position: relative;
+				    width: 100px;
+				    background-color: #0066ff9c;
+
+
+				    ul{
+				    	position: absolute;
+				    	top: 40px;
+				    	padding-left: 0;
+			    	    flex-direction: column;
+			    	    border: 1px solid;
+			    	    left: -79px;
+			    	    display: none !important;
+
+			    	    li{
+			    	    	border-bottom: 1px solid grey;
+			    	    }
+
+			    	    
+				    }
+
+				    &:hover>ul{
+				    	display: flex !important;
+				    }
+			}
+		}
+	}
+	
+}
+
+
 
 
 
