@@ -1,10 +1,19 @@
-<li id="post<%= post.id %>">
+<li id="post<%= post.id %>" class="wow fadeInUp">
 	<p class="post-content"><%= post.content %></p>
 	<p class="post-user">
 		<small>
 			By <%= post.user.email %> 
 			at <%= post.created_at.to_date %>
 		</small>
+	</p>
+	<p class="post-likes">
+		<span class="like-status">
+		
+				<%= link_to post.current_like_status_string(current_user).html_safe, like_toggle_path(parent_type: "Post", parent_id: post.id), method: :get, remote: true %>
+
+		</span>
+		
+		<span class="like-count"><%= post.likes.length %></span>
 	</p>
 
 	<div class="post-comments-container">

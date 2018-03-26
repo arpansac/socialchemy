@@ -6,11 +6,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" %>
 </head>
 <body>
 
 	<header id="body-header">
-		<div class="logo">
+		<div class="logo animated bounce">
 			<p>Socialchemy</p>
 		</div>
 		<nav>
@@ -36,6 +37,10 @@
 
 <%= yield %>
 
+	<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" %>
+	<script type="text/javascript">
+		new WOW().init()
+	</script>
 </body>
 </html>
 

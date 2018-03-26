@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create]
 
+  get "likes/toggle", as: "like_toggle"
+
   get "users/my_profile"
 
   patch "users/update" => "users#update", as: "user"

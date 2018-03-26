@@ -1,0 +1,9 @@
+<% if params[:parent_type] == "Post" %>
+	var like = '<i class="fa fa-thumbs-o-up"></i>';
+	if (<%= @liked %> == true){
+		like = '<i class="fa fa-thumbs-o-down"></i>'
+	}
+	$("#post" + <%= params[:parent_id] %> + ">.post-likes>.like-status>a").html(like);
+<% else %>	
+
+<% end %>
