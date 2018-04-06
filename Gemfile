@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-google-oauth2'
+
+
 gem "font-awesome-rails"
 
 gem "paperclip", "~> 6.0.0"
