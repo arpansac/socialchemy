@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <script src="
+https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" %>
 </head>
@@ -17,9 +19,7 @@
 		<nav>
 			<ul>
 				<% if user_signed_in? %>
-				<li>
-					<%= current_user.email %>
-				</li>
+				<li id="current_user_email"><%= current_user.email %></li>
 				<li>
 					<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 				</li>
@@ -36,6 +36,29 @@
 	</header>
 
 <%= yield %>
+
+	<% if user_signed_in? %>
+	<div id="user-chat-box">
+		<ul id="chat-messages-list">
+			<li class="other-message">
+				<span>Other Message</span>
+			</li>
+			<li class="self-message">
+				<span>
+					Self Message
+				</span>
+				
+			</li>
+
+		</ul>
+		<div id="chat-message-input-container">
+			<input id="chat-message-input" placeholder="Type message here">
+			<button id="send-message"><i class="fa fa-thumbs-up"></i></button>
+		</div>
+
+	</div>
+	<% end %>
+
 
 	<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" %>
 	<script type="text/javascript">
