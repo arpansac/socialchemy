@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  post 'users/api_sign_in' => "users#api_sign_in"
 
-  resources :posts, only: [:create]
+  resources :posts, only: [:create, :index]
 
   resources :comments, only: [:create]
 
@@ -13,4 +14,29 @@ Rails.application.routes.draw do
     
   root "posts#index"
 
+  namespace :api do
+  	namespace :v1 do
+  		get 'posts' => 'posts#index'
+    end
+  end
+
+
+
+
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

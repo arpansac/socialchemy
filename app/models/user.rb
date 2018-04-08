@@ -31,7 +31,13 @@ class User < ActiveRecord::Base
         )
     end
     user
-end 
+  end 
+
+  def set_auth_token
+    self.auth_token = SecureRandom.hex
+    self.token_is_valid = true
+    self.save
+  end
 
 
 

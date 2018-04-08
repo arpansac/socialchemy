@@ -1,4 +1,6 @@
 class  PostsController < ApplicationController
+	skip_before_action :verify_authenticity_token, only: [:create]
+	before_action :authenticate_user_custom, only: [:create]
 
 	def index
 
@@ -12,19 +14,35 @@ class  PostsController < ApplicationController
 		
 		@posts = Post.offset((@page - 1) * @count).limit(@count)
 
+
+		respond_to do |format|
+			format.html 
+			format.js
+			format.json {render json: @posts, adapter: :json, root: "posts"}
+		end
 		
 	end
 
 	def create
 		@post = Post.create(
 				content: params[:post][:content],
-				user_id: current_user.id
+				user_id: @current_user.id
 				# or you can do
 				# user: current_user
 			)
 		@comment = Comment.new
 
+		respond_to do |format|
+			format.html
+			format.js
+			format.json {render json: @post}
+		end
+
 
 	end
 
 end
+
+
+
+
