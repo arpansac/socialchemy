@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'resque-web', require: 'resque_web'
+
+gem 'redis', '<4'
+
+gem 'resque'
+
 gem 'active_model_serializers'
 
 

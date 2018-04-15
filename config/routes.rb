@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   end
 
 
+  require "resque_web"
+  # MyApp::Application.routes.draw do
+    mount Resque::Server, :at => "/resque"
+  # end
+
+
 
 
 
