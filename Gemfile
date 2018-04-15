@@ -1,5 +1,14 @@
 source 'https://rubygems.org'
 
+gem 'pg'
+
+gem 'resque-web', require: 'resque_web'
+
+gem 'redis', '<4'
+
+gem 'resque'
+
+
 gem 'active_model_serializers'
 
 

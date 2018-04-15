@@ -16,7 +16,8 @@ class  CommentsController < ApplicationController
 				# user: current_user
 			)
 
-		UserMailer.new_comment(@comment).deliver_now
+		Resque.enqueue(CommentEmailWorker, 'aksjvhbfkjdh')
+		Resque.enqueue(CommentEmailWorker, @comment.id)
 
 
 	end

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
 
+  require "resque_web"
+  mount ResqueWeb::Engine => "/resque_web"
 
 
 
