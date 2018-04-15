@@ -22,7 +22,7 @@ test:
   database: db/test.sqlite3
 
 production:
-	<<: *default
+  <<: *default
   adapter: postgresql
   host: localhost
   encoding: unicode
