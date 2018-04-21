@@ -261,11 +261,7 @@ DEPENDENCIES
   jquery-rails
   omniauth-google-oauth2
   paperclip (~> 6.0.0)
-<<<<<<< HEAD
   pg (= 0.19)
-=======
-  pg (~> 0.15)
->>>>>>> 6cf3fc9c6dba4d86e813572a93575ca50fcfe91b
   rails (= 4.2.5)
   redis (< 4)
   resque
