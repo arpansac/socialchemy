@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'pg'
+gem 'pg', '=0.19'
 
 gem 'resque-web', require: 'resque_web'
 
