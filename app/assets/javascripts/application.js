@@ -24,7 +24,7 @@ window.addEventListener('load', function(){
 
 	if (user_email){
 		// establish a connection
-		var socket = io.connect('http://localhost:8000');
+		var socket = io.connect('http://13.127.85.243:5000');
 		
 		// detect connection confirmation
 		socket.on('connect', function(){
